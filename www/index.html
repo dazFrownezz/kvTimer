@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+
+
+  <body ng-app="kvTimer" ng-controller="kvTimerCtrl">
+
+    <ion-pane>
+      <!-- Main header -->
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Kv Queue Timer</h1>
+
+        <!-- menu button -->
+        <button class="button button-icon">
+          <i class="icon ion-more"></i>
+        </button>
+
+        <!-- add timer button -->
+        <button class="button button-icon" ng-click="newTimer()">
+          <i class="icon ion-ios-plus"></i>
+        </button>
+
+      </ion-header-bar>
+
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="timer in timers">
+            {{timer.timeIn}} {{timer.timerId}}
+
+            <button class="button button-icon" ng-click="removeTimer()">
+              <i class="ion-ios-minus-outline"></i>
+            </button>
+
+          </ion-item>
+        </ion-list>
+      </ion-content>
+
+    </ion-pane>
+  </body>
+</html>
